@@ -1,7 +1,7 @@
 import jwt from "jwt-simple";
 
-describe("Route: Tasks", () => {
-    const Users =app.db.models.Users;
+describe("Routes: Tasks", () => {
+    const Users = app.db.models.Users;
     const jwtSecret = app.libs.config.jwtSecret;
 
     let token;
@@ -20,12 +20,12 @@ describe("Route: Tasks", () => {
                 done();
             });
     });
-    describe("GET /users", () => {
+    describe("GET /user", () => {
         describe("status 200", () => {
             it("returns an authenticated user", done => {
                 // Código de teste
                 request.get("/user")
-                    .set("Authentication", `JWT ${token}`)
+                    .set("Authorization", `JWT ${token}`)
                     .expect(200)
                     .end((err, res) => {
                         expect(res.body.name).to.eql("John");
@@ -65,4 +65,4 @@ describe("Route: Tasks", () => {
             });
         });
     });
-})
+});

@@ -52,7 +52,7 @@ describe("Routes: Tasks", () => {
             });
         });
     });
-    describe("POST /tasks/", () => {
+    describe("POST /tasks", () => {
         describe("status 200", () => {
             it("creates a new task", done => {
                 // Código de testes
@@ -81,7 +81,7 @@ describe("Routes: Tasks", () => {
             });
         });
         describe("status 404", () => {
-            describe("throws error when task not exist", done => {
+            it("throws error when task not exist", done => {
                 request.get("/tasks/0")
                     .set("Authorization", `JWT ${token}`)
                     .expect(404)
@@ -94,6 +94,7 @@ describe("Routes: Tasks", () => {
             it("updates a task", done => {
                 // Código de testes
                 request.put(`/tasks/${fakeTask.id}`)
+                    .set("Authorization", `JWT ${token}`)
                     .send({
                         title: "Travel",
                         done: true
@@ -107,7 +108,7 @@ describe("Routes: Tasks", () => {
         describe("status 204", () => {
             it("removes a task", done => {
                 // Código de testes
-                request.delete(`/task/${fakeTask.id}`)
+                request.delete(`/tasks/${fakeTask.id}`)
                     .set("Authorization", `JWT ${token}`)
                     .expect(204)
                     .end((err, res) => done(err));

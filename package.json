@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run apidoc && babel-node index.js",
-    "apidoc": "apidoc -i routes/ -o public/apidoc", 
-    "test": "SET NODE_ENV=test && mocha test/**/*.js"
+    "apidoc": "apidoc -i routes/ -o public/apidoc",
+    "test": "NODE_ENV=test mocha test/**/*.js"
   },
   "apidoc": {
     "name": "Documentação - Node Task API",
