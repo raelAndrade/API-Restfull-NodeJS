@@ -4,7 +4,7 @@ module.exports = app => {
 
     /**
      * @api {get} /user Exibe usuário autenticado
-     * @apiGroup Usuário
+     * @apiGroup Usuario
      * @apiHeader {String} Authorization Token de usuário
      * @apiHeaderExample {json} Header
      *  {"Authorization": "JWT xyz.abc.123.hgf"}
@@ -35,8 +35,8 @@ module.exports = app => {
         })
         /**
          * @api {delete} /user Excluir usuário autenticado
-         * @apiGroup Usuário
-         * @apiHeader {String} Authorization Token de usuário
+         * @apiGroup Usuario
+         * @apiHeader {String} Authorization Token de usuario
          * @apiHeaderExample {json} Header
          *  {"Authorization": JWT xyz.abc.123.hgf}
          * @apiSuccessExample {json} Sucesso
@@ -53,8 +53,8 @@ module.exports = app => {
         });
 
     /**
-     * @api {post} /users Cadastra novo usuaŕio
-     * @apiGroup Usuário
+     * @api {post} /users Cadastra novo usuario
+     * @apiGroup Usuario
      * @apiParam {String} name Nome
      * @apiParam {String} email Email
      * @apiParam {String} password Senha
@@ -81,6 +81,7 @@ module.exports = app => {
      *      "created_at": "2018-06-19T23:29:51.778Z"
      *  }
      * @apiErrorExample {json} Erro no cadastro
+     *  HTTP/1.1 412 Precodition Failed
      */
     app.post("/users", (req, res) => {
         Users.create(req.body)
